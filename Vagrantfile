@@ -20,8 +20,9 @@ Vagrant.configure("2") do |config|
     # docker, docker-compose
     curl -fsSL https://get.docker.com -o get-docker.sh
     sh get-docker.sh
-    curl -sL https://github.com/docker/compose-cli/releases/download/v2.0.0-beta.3/docker-compose-linux-amd64 -o ~/.docker/cli-plugins/docker-compose --create-dirs
-    chmod 755 ~/.docker/cli-plugins/docker-compose
+    curl -fsSL https://github.com/docker/compose-cli/releases/download/v2.0.0-beta.3/docker-compose-linux-amd64 -o .docker/cli-plugins/docker-compose --create-dirs
+    chmod 755 .docker/cli-plugins/docker-compose
+    chown -R vagrant:vagrant .docker
     usermod -aG docker vagrant
     gpasswd -a vagrant docker
     systemctl enable --now docker
