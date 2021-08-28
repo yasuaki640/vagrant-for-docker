@@ -4,10 +4,11 @@ Vagrant.configure("2") do |config|
     # Sync Directory
     config.vm.synced_folder "/Users/yasuaki640/PhpstormProjects", "/home/vagrant/workspace", create:"true", mount_options: ['dmode=777','fmode=777']
     # Mapping ports
-    config.vm.network "forwarded_port", guest: 8000, host: 8000
+    config.vm.network "forwarded_port", guest: 80,   host: 80
     config.vm.network "forwarded_port", guest: 3306, host: 3306
-    config.vm.network "forwarded_port", guest: 8080, host: 8080
     config.vm.network "forwarded_port", guest: 4572, host: 4572
+    config.vm.network "forwarded_port", guest: 8080, host: 8080
+    config.vm.network "forwarded_port", guest: 8000, host: 8000
     config.vm.network "private_network", ip: "192.168.33.10"
     # Start ssh agent
     config.vm.provision "shell", run: "always", inline: <<-SHELL
